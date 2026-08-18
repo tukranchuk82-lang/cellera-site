@@ -1,0 +1,9 @@
+# у приложения свой репозиторий — cellera-app
+app/
+
+# исходная предметка BJAIN: 113 МБ, уже обработана в photos/obrabotannye
+prototype/photos/soli/
+
+# служебное
+Thumbs.db
+.DS_Store
