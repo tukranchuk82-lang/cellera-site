@@ -628,7 +628,7 @@ a { color: var(--sage-deep); text-decoration: none; }
 }
 .shot figcaption b { color: var(--ink); font-weight: 700; }
 
-.trust { border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .trust div { padding: 22px 30px 26px 0; font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
 .trust div + div { padding-left: 30px; border-left: 1px solid var(--line); }
 .trust b { display: block; color: var(--ink); font-weight: 700; margin-bottom: 4px; font-size: 14.5px; }
@@ -660,7 +660,7 @@ a { color: var(--sage-deep); text-decoration: none; }
   .hero h1 { font-size: clamp(30px, 4.6vw, 40px); }
   .hero .shot { aspect-ratio: 3 / 4; }
   .hero .lead { font-size: 17px; }
-  .trust { margin-top: 4px; }
+  .trust { margin-top: 0; }
 }
 
 /* с этой ширины колонки уже не помещаются: всё в одну */
@@ -1787,11 +1787,6 @@ a { color: var(--sage-deep); text-decoration: none; }
         </div>
       </div>
 
-      <div class="trust rise d5">
-        <div><b>Анна Шаронова</b>Терапевт, классический гомеопат. Выпускница Лондонского факультета гомеопатии. Привезла соли BJAIN в Россию.</div>
-        <div><b>Завод BJAIN, Индия</b>Производство по стандарту GMP, оригинальная рецептура Шюсслера, три фармакопеи.</div>
-        <div><b>Более 150 лет практики</b>Первая публикация об открытии — 1873 год. Метод применяют в Германии, Индии, Англии, Франции.</div>
-      </div>
     </div>
   </div>
 
@@ -1827,6 +1822,15 @@ a { color: var(--sage-deep); text-decoration: none; }
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- кто за этим стоит -->
+  <div class="container">
+    <div class="trust rise d5">
+      <div><b>Анна Шаронова</b>Терапевт, классический гомеопат. Выпускница Лондонского факультета гомеопатии. Привезла соли BJAIN в Россию.</div>
+      <div><b>Завод BJAIN, Индия</b>Производство по стандарту GMP, оригинальная рецептура Шюсслера, три фармакопеи.</div>
+      <div><b>Более 150 лет практики</b>Первая публикация об открытии — 1873 год. Метод применяют в Германии, Индии, Англии, Франции.</div>
     </div>
   </div>
 
