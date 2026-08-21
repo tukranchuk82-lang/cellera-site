@@ -850,6 +850,18 @@ a { color: var(--sage-deep); text-decoration: none; }
   line-height: 1.4;
   color: var(--ink-soft);
 }
+.saltstrip { display: flex; flex-wrap: wrap; gap: 12px; }
+.saltstrip .st {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 7px 18px 7px 7px;
+  cursor: pointer;
+  transition: transform .15s var(--ease), box-shadow .15s var(--ease);
+}
 .saltstrip .st:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .saltstrip .st .nm { font-size: 14px; font-weight: 600; line-height: 1.25; }
 .saltstrip .st .nm span { display: block; font-weight: 400; font-size: 12px; color: var(--ink-faint); }
