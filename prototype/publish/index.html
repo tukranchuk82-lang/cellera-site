@@ -820,20 +820,35 @@ a { color: var(--sage-deep); text-decoration: none; }
    БЛОКИ КОНТЕНТА
    ============================================================ */
 /* числа */
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.stats div { padding: 30px 24px; }
-.stats div + div { border-left: 1px solid var(--line); }
-.stats .n { font-family: var(--serif); font-size: 52px; line-height: 1; color: var(--ochre-deep); font-weight: 500; }
-.stats .t { font-size: 14.5px; color: var(--ink-soft); margin-top: 10px; max-width: 22em; }
-
-/* дорожка 12 солей */
-.saltstrip { display: flex; flex-wrap: wrap; gap: 12px; }
-.saltstrip .st {
-  display: flex; align-items: center; gap: 11px;
-  background: var(--card); border: 1px solid var(--line);
-  border-radius: 100px; padding: 7px 18px 7px 7px;
-  cursor: pointer;
-  transition: transform .15s var(--ease), box-shadow .15s var(--ease);
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px 30px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+  padding: 26px 32px;
+}
+.stats > div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+.stats .n {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1;
+  color: var(--ochre-deep);
+  font-variant-numeric: lining-nums;
+  font-feature-settings: 'lnum' 1;
+}
+.stats .t {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink-soft);
 }
 .saltstrip .st:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .saltstrip .st .nm { font-size: 14px; font-weight: 600; line-height: 1.25; }
@@ -1823,7 +1838,7 @@ a { color: var(--sage-deep); text-decoration: none; }
   .nav { display: none; }
   .burger { display: grid; }
   .sec { padding: 54px 0; }
-  .stats div + div { border-left: 0; border-top: 1px solid var(--line); }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 22px 24px; }
   .chat { max-height: none; }
 }
 @media (max-width: 560px) {
@@ -1836,6 +1851,11 @@ a { color: var(--sage-deep); text-decoration: none; }
   .rec { max-width: 100%; }
   .card { padding: 20px; }
   .setcard { padding: 22px; }
+}
+@media (max-width: 620px) {
+  .stats { grid-template-columns: minmax(0, 1fr); gap: 15px; padding: 20px 22px; }
+  .stats .n { font-size: 36px; }
+  .stats .t { font-size: 13.5px; }
 }
 </style>
 
@@ -2118,10 +2138,10 @@ a { color: var(--sage-deep); text-decoration: none; }
   <!-- числа -->
   <div class="container">
     <div class="stats reveal">
-      <div><div class="n">1873</div><div class="t">Год первой публикации Шюсслера о биохимической терапии</div></div>
-      <div><div class="n">12</div><div class="t">Минеральных солей, из которых состоят ткани тела</div></div>
-      <div><div class="n">150+</div><div class="t">Лет метод применяют в Германии, Индии, Англии, Франции</div></div>
-      <div><div class="n">42</div><div class="t">Позиции в каталоге: 12 солей и 30 биокомбинаций</div></div>
+      <div><span class="n">1873</span><span class="t">Год первой публикации Шюсслера</span></div>
+      <div><span class="n">12</span><span class="t">Солей, из которых состоят ткани</span></div>
+      <div><span class="n">150+</span><span class="t">Лет метод применяют в мире</span></div>
+      <div><span class="n">42</span><span class="t">Позиции в каталоге Cellera</span></div>
     </div>
   </div>
 
