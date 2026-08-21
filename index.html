@@ -133,7 +133,16 @@ a { color: var(--sage-deep); text-decoration: none; }
 .row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 
 /* акварельные пятна */
-.blobs { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.blobs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  /* акварельная подложка не обрывается по прямой, а растворяется книзу */
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 52%, rgba(0, 0, 0, .45) 78%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 52%, rgba(0, 0, 0, .45) 78%, transparent 100%);
+}
 .blob { position: absolute; border-radius: 50%; filter: blur(50px); }
 .blob.a { width: 380px; height: 380px; background: var(--sage); top: -150px; left: -110px; opacity: .4; }
 .blob.b { width: 320px; height: 320px; background: var(--rose); top: -110px; left: 46%; opacity: .4; }
@@ -587,7 +596,7 @@ a { color: var(--sage-deep); text-decoration: none; }
   align-content: start;
   column-gap: 52px;
   row-gap: 0;
-  padding: 44px 0 48px;
+  padding: 44px 0 76px;
 }
 .hero-head { grid-area: head; }
 .hero .shot { grid-area: shot; align-self: center; max-height: 470px; }
