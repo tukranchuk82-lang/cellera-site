@@ -509,7 +509,7 @@ a { color: var(--sage-deep); text-decoration: none; }
   inset: 0;
   z-index: 55;
   background: var(--paper);
-  padding: 90px 28px 40px;
+  padding: 68px 24px 34px;
   display: none;
   flex-direction: column;
   gap: 4px;
@@ -518,13 +518,58 @@ a { color: var(--sage-deep); text-decoration: none; }
 .mmenu.open { display: flex; }
 .mmenu a {
   font-family: var(--serif);
-  font-size: 27px;
+  font-size: 25px;
   color: var(--ink);
-  padding: 12px 0;
+  padding: 10px 0;
   border-bottom: 1px solid var(--line);
   cursor: pointer;
 }
 .mclose { position: fixed; top: 18px; right: 24px; z-index: 56; }
+/* «Магазин» в мобильном меню: яркая строка, раскрывается по нажатию */
+.mm-shop {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  margin-top: 12px;
+  background: var(--sage-deep);
+  color: #fff;
+  border: 0;
+  border-radius: 100px;
+  padding: 16px 24px;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 20px -10px rgba(110, 136, 116, .8);
+  transition: filter .15s var(--ease), transform .15s var(--ease);
+}
+.mm-shop:active { transform: scale(.985); }
+.mm-shop .bars { display: grid; gap: 3px; }
+.mm-shop .bars i { display: block; width: 15px; height: 1.7px; background: currentColor; border-radius: 2px; }
+.mm-shop .chev { margin-left: auto; display: grid; place-items: center; transition: transform .22s var(--ease); }
+.mm-shop.open .chev { transform: rotate(180deg); }
+
+.mm-sub { display: none; flex-direction: column; gap: 2px; padding: 8px 0 4px; }
+.mm-sub.open { display: flex; animation: dropin .2s var(--ease); }
+.mmenu .mm-sub a {
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 13px 22px;
+  border-bottom: 0;
+  border-radius: 14px;
+  background: var(--sage-wash);
+}
+.mmenu .mm-sub a span {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--sage-deep);
+  opacity: .75;
+  margin-top: 2px;
+}
 
 
 /* ============================================================
@@ -594,14 +639,6 @@ a { color: var(--sage-deep); text-decoration: none; }
    Поле поиска с фильтрами уходит — оно отжимало фото за экран.
    ============================================================ */
 .mtools { display: none; }
-.mm-h {
-  font-size: 11.5px;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--sage-deep);
-  margin: 22px 0 4px;
-}
 .hero-note {
   margin: 12px 0 0;
   font-size: 13px;
@@ -1683,10 +1720,18 @@ a { color: var(--sage-deep); text-decoration: none; }
   <a data-go="prinimat">Как принимать</a>
   <a data-go="kupit">Где купить</a>
   <a data-go="catalog">Каталог</a>
-  <span class="mm-h">Магазин</span>
-  <a data-cat="salts">Соли</a>
-  <a data-cat="bio">Комплексы</a>
-  <a data-cat="sets">Наборы</a>
+  <button class="mm-shop" id="mmShop" aria-expanded="false" aria-controls="mmSub">
+    <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    Магазин
+    <span class="chev" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l7 7 7-7"/></svg>
+    </span>
+  </button>
+  <div class="mm-sub" id="mmSub">
+    <a data-cat="salts">Соли<span>12 отдельных солей</span></a>
+    <a data-cat="bio">Комплексы<span>30 биокомбинаций BJAIN</span></a>
+    <a data-cat="sets">Наборы<span>Готовые схемы, выгоднее поштучно</span></a>
+  </div>
 </div>
 
 <main id="main">
@@ -3439,6 +3484,9 @@ function go(page, noScrollReset) {
   });
   $$('#nav a').forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-go') === page); });
   $('#mmenu').classList.remove('open');
+  var mmSub = $('#mmSub'), mmShop = $('#mmShop');
+  if (mmSub) mmSub.classList.remove('open');
+  if (mmShop) { mmShop.classList.remove('open'); mmShop.setAttribute('aria-expanded', 'false'); }
   closeDrops();
   renderCrumbs(page, null);
   if (!noScrollReset) window.scrollTo({ top: 0, behavior: 'auto' });
@@ -3565,6 +3613,18 @@ function observeReveals() {
     if (e.key === 'Escape' && !lb.hidden) close();
   });
 })();
+
+/* --- «Магазин» в мобильном меню раскрывается по нажатию --- */
+document.addEventListener('click', function (e) {
+  if (!e.target || !e.target.closest) return;
+  var b = e.target.closest('#mmShop');
+  if (!b) return;
+  var sub = $('#mmSub');
+  var on = !sub.classList.contains('open');
+  sub.classList.toggle('open', on);
+  b.classList.toggle('open', on);
+  b.setAttribute('aria-expanded', String(on));
+});
 
 /* --- мобильный поиск: лупа разворачивает поле --- */
 document.addEventListener('click', function (e) {
