@@ -1421,8 +1421,16 @@ a { color: var(--sage-deep); text-decoration: none; }
 @media (max-width: 1080px) {
   .annacard { grid-template-columns: 220px minmax(0, 1fr); min-height: 0; max-width: none; }
   .ac-body { grid-column: 2; padding: 30px; }
-  .ac-foot { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .ac-branch-l { left: auto; right: -56px; bottom: -52px; width: 180px; opacity: .75; }
+  .ac-foot { flex-direction: column; align-items: stretch; gap: 0; }
+  /* ссылка отделена от цифр собственной строкой — раньше она жалась
+     к ним и заходила на угловую веточку */
+  .ac-foot .link-round {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    justify-content: flex-start;
+  }
+  .ac-branch-l { left: auto; right: -60px; bottom: -60px; width: 160px; opacity: .55; }
   .ac-branch-r { display: none; }
 }
 
@@ -1430,11 +1438,11 @@ a { color: var(--sage-deep); text-decoration: none; }
   .annacard { grid-template-columns: minmax(0, 1fr); }
   .ac-photo { grid-column: 1; aspect-ratio: 4 / 3; }
   .ac-photo img { object-position: 50% 10%; }
-  .ac-body { grid-column: 1; padding: 26px 22px 0; }
+  .ac-body { grid-column: 1; padding: 26px 22px 34px; }
   .ac-stats { flex-wrap: wrap; gap: 14px 0; margin-top: 22px; }
   .ac-stats > div { padding-right: 18px; margin-right: 18px; }
   .ac-stats b { font-size: 28px; }
-  .ac-branch-l { width: 150px; right: -30px; bottom: -30px; opacity: .8; }
+  .ac-branch-l { width: 120px; right: -34px; bottom: -34px; opacity: .5; }
 }
 
 /* ---------- карточки журнала ---------- */
