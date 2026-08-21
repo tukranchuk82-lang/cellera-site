@@ -577,7 +577,7 @@ a { color: var(--sage-deep); text-decoration: none; }
    ============================================================ */
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  grid-template-columns: minmax(0, 1.32fr) minmax(0, .68fr);
   grid-template-areas:
     "head shot"
     "body shot";
@@ -590,7 +590,7 @@ a { color: var(--sage-deep); text-decoration: none; }
   padding: 44px 0 48px;
 }
 .hero-head { grid-area: head; }
-.hero .shot { grid-area: shot; align-self: center; }
+.hero .shot { grid-area: shot; align-self: center; max-height: 470px; }
 .hero-body { grid-area: body; align-self: start; }
 
 .hero h1 {
@@ -629,7 +629,7 @@ a { color: var(--sage-deep); text-decoration: none; }
 }
 .hb sup { color: var(--ink-faint); }
 
-@media (max-width: 1200px) {
+@media (max-width: 1080px) {
   .hbadges { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 24px; }
 }
 
@@ -673,7 +673,7 @@ a { color: var(--sage-deep); text-decoration: none; }
 /* кружок на фотографии */
 .shot-badge {
   position: absolute;
-  top: 18px;
+  bottom: 18px;
   left: 18px;
   width: 96px;
   height: 96px;
@@ -762,7 +762,7 @@ a { color: var(--sage-deep); text-decoration: none; }
   .hero .lead { font-size: 16.5px; }
   .hbadges { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 22px; }
   .hero-act { gap: 18px; margin-top: 24px; }
-  .shot-badge { width: 84px; height: 84px; top: 14px; left: 14px; }
+  .shot-badge { width: 82px; height: 82px; bottom: 14px; left: 14px; }
   .trust { margin-top: 0; }
 }
 
@@ -791,7 +791,7 @@ a { color: var(--sage-deep); text-decoration: none; }
   .link-round { justify-content: center; }
   .hero-foot { margin-top: 16px; text-align: center; }
 
-  .shot-badge { width: 74px; height: 74px; top: 12px; left: 12px; font-size: 9.5px; }
+  .shot-badge { width: 74px; height: 74px; bottom: 12px; left: 12px; font-size: 9.5px; }
   .shot-badge b { font-size: 10px; }
 }
 
@@ -808,7 +808,7 @@ a { color: var(--sage-deep); text-decoration: none; }
   .hb { font-size: 12.5px; }
   .hero-act { margin-top: 18px; gap: 12px; }
   .hero-act .btn { font-size: 15px; padding: 14px 16px; }
-  .shot-badge { width: 66px; height: 66px; top: 10px; left: 10px; font-size: 9px; }
+  .shot-badge { width: 66px; height: 66px; bottom: 10px; left: 10px; font-size: 9px; }
   .shot-badge b { font-size: 9.5px; }
 }
 
